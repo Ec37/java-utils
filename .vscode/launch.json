@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-StartApplication<utils>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.cnuc.StartApplication",
+            "projectName": "utils",
+            "args": ""
+        }
+    ]
+}

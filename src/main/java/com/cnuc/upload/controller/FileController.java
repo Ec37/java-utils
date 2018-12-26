@@ -1,4 +1,4 @@
-package com.cnuc.controller;
+package com.cnuc.upload.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,8 +12,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cnuc.base.BaseOpt;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.cnuc.upload.base.BaseOpt;
 
 @RestController
 @RequestMapping

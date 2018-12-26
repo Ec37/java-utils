@@ -1,4 +1,4 @@
-package com.cnuc;
+package com.cnuc.chat;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +14,7 @@ import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
 @SpringBootApplication
 public class StartApplication {
 	
-	@Value("${wss.service.prot}")
+	@Value("${wss.service.port}")
 	private Integer port;
 	
 	@Value("${wss.service.host}")

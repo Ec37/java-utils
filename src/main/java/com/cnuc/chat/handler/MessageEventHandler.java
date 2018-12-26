@@ -1,4 +1,4 @@
-package com.cnuc.handler;
+package com.cnuc.chat.handler;
 
 import java.util.Map;
 
@@ -14,30 +14,32 @@ import com.corundumstudio.socketio.annotation.OnEvent;
 
 @Component
 public class MessageEventHandler {
-	
+
 	private final SocketIOServer server;
-	
+
 
 	@Autowired
 	public MessageEventHandler(SocketIOServer server) {
 		this.server = server;
 	}
-	
+
 	@OnConnect
-	public void onConnect(SocketIOServer socketIOServer) {
-		System.out.println("test connect");//TODO:记录用户登陆状态
+	public void onConnect(SocketIOClient client) {
+		System.out.println("test connect");// TODO:记录用户登陆状态
+
 	}
-	
+
 	@OnDisconnect
-	public void onDisconnect(SocketIOClient  client) {
-		System.out.println("test disconnect");//TODO:记录用户短线状态
+	public void onDisconnect(SocketIOClient client) {
+		System.out.println("test disconnect");// TODO:记录用户短线状态
+
 	}
-	
-	@OnEvent(value="messageevent")
-	public void onEvent(SocketIOClient client,AckRequest request,Map<String,String> map) {
-		
+
+	@OnEvent(value = "messageevent")
+	public void onEvent(SocketIOClient client, AckRequest request, Map<String, String> map) {
+		System.out.println("message ");
+		String targetClientId = map.get("clientId");
+		client.sendEvent("messageevent", map);
 	}
-	
-	
 
 }

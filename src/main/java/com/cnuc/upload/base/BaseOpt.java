@@ -1,4 +1,4 @@
-package com.cnuc.base;
+package com.cnuc.upload.base;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

@@ -1,6 +1,9 @@
 package com.cnuc.chat.handler;
 
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -39,7 +42,11 @@ public class MessageEventHandler {
 	public void onEvent(SocketIOClient client, AckRequest request, Map<String, String> map) {
 		System.out.println("message ");
 		String targetClientId = map.get("clientId");
-		client.sendEvent("messageevent", map);
+//		client.sendEvent("messageevent", map);
+		Collection<SocketIOClient> allClients = server.getAllClients();
+		for (SocketIOClient c : allClients) {
+			c.sendEvent("messageevent", map);
+		}
 	}
 
 }

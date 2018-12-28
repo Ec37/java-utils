@@ -13,9 +13,9 @@ import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers;
 import org.springframework.stereotype.Component;
 
 import com.cnuc.chat.entity.ChatGroupOnly;
-import com.cnuc.chat.entity.MessageLog;
+import com.cnuc.chat.entity.ChatHistory;
 import com.cnuc.chat.repository.ChatGroupOnlyRepository;
-import com.cnuc.chat.repository.MessageLogRepository;
+import com.cnuc.chat.repository.ChatHistoryRepository;
 import com.corundumstudio.socketio.AckRequest;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
@@ -32,7 +32,7 @@ public class MessageEventHandler {
 	private ChatGroupOnlyRepository chatGroupOnlyRepository;
 	
 	@Autowired
-	private MessageLogRepository messageLogRepository;
+	private ChatHistoryRepository chatHistoryRepository;
 
 
 	@Autowired
@@ -82,14 +82,14 @@ public class MessageEventHandler {
 		ChatGroupOnly chatGroupOnlys = chatGroupOnlyRepository.findClientById(cgoId);
 		
 		if(null!=chatGroupOnlys) {
-			MessageLog entity = new MessageLog();
+			ChatHistory entity = new ChatHistory();
 			entity.setCgoId(cgoId);
 			entity.setCreateDate(new Date());
 			entity.setSession(sessionId.toString());
 			entity.setType(map.get("type"));
 			entity.setContent(map.get("content"));
 			entity.setUserName(map.get("userName"));
-			messageLogRepository.save(entity);
+			chatHistoryRepository.save(entity);
 		}
 		Collection<SocketIOClient> allClients = server.getAllClients();
 		for (SocketIOClient c : allClients) {

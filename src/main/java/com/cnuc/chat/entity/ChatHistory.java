@@ -12,8 +12,8 @@ import org.hibernate.annotations.GeneratorType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="t_message_log")
-public class MessageLog {
+@Table(name="t_chat_history")
+public class ChatHistory {
 	
 	@Id
     @GeneratedValue(generator = "system-uuid")
